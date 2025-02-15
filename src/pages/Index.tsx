@@ -22,7 +22,7 @@ const Index = () => {
       <div 
         className="absolute inset-0 z-0 bg-fixed"
         style={{
-          backgroundImage: 'url("https://images.unsplash.com/photo-1615461066159-fea0960944d0?q=80&w=2000")',
+          backgroundImage: 'url("https://images.unsplash.com/photo-1504813184591-01572f98c85f?auto=format&fit=crop&q=80")',
           backgroundSize: 'cover',
           backgroundPosition: 'center'
         }}
@@ -37,9 +37,9 @@ const Index = () => {
           <div className="mb-8 relative">
             <div className="absolute inset-0 bg-medical-500/20 rounded-full blur-3xl transform -translate-y-1/2" />
             <img 
-              src="https://images.unsplash.com/photo-1615461066168-e138b2bd8a87?w=300" 
+              src="https://images.unsplash.com/photo-1582719471384-894fbb16e074?auto=format&fit=crop&q=80" 
               alt="Blood Donation" 
-              className="w-28 h-28 mx-auto rounded-full border-4 border-medical-100 shadow-2xl mb-6 relative z-10"
+              className="w-28 h-28 mx-auto rounded-full border-4 border-medical-100 shadow-2xl mb-6 relative z-10 object-cover"
             />
           </div>
           <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 tracking-tight">
@@ -63,7 +63,7 @@ const Index = () => {
                 "Donor and patient statistics",
                 "Emergency request management"
               ]}
-              imageSrc="https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=400"
+              imageSrc="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80"
             />
           </div>
           <div className="flex justify-center transform hover:-translate-y-2 transition-transform duration-300">
@@ -77,7 +77,7 @@ const Index = () => {
                 "View donation history",
                 "Track impact statistics"
               ]}
-              imageSrc="https://images.unsplash.com/photo-1615461066339-21152fecf9a9?w=400"
+              imageSrc="https://images.unsplash.com/photo-1615461066577-a9256c06fdde?auto=format&fit=crop&q=80"
             />
           </div>
           <div className="flex justify-center transform hover:-translate-y-2 transition-transform duration-300">
@@ -91,7 +91,7 @@ const Index = () => {
                 "Real-time status updates",
                 "Direct hospital communication"
               ]}
-              imageSrc="https://images.unsplash.com/photo-1631815589968-fdb09a223b1e?w=400"
+              imageSrc="https://images.unsplash.com/photo-1576765974405-2c28767766d5?auto=format&fit=crop&q=80"
             />
           </div>
         </div>
