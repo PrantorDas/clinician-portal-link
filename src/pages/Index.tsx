@@ -1,8 +1,28 @@
 
-import { User, Hospital, Lock } from "lucide-react";
+import { User, Hospital, Lock, LogOut } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import LoginCard from "@/components/LoginCard";
+import { supabase } from "@/integrations/supabase/client";
+import { useNavigate } from "react-router-dom";
+import { useToast } from "@/components/ui/use-toast";
 
 const Index = () => {
+  const navigate = useNavigate();
+  const { toast } = useToast();
+
+  const handleLogout = async () => {
+    const { error } = await supabase.auth.signOut();
+    if (error) {
+      toast({
+        variant: "destructive",
+        title: "Error",
+        description: "Failed to sign out. Please try again.",
+      });
+    } else {
+      navigate("/auth");
+    }
+  };
+
   // Handlers for different login types
   const handleDoctorLogin = () => {
     console.log("Doctor login clicked");
@@ -28,6 +48,18 @@ const Index = () => {
         }}
       >
         <div className="absolute inset-0 bg-gradient-to-b from-medical-900/90 via-medical-900/70 to-medical-900/90" />
+      </div>
+
+      {/* Logout Button */}
+      <div className="absolute top-4 right-4 z-20">
+        <Button
+          variant="outline"
+          onClick={handleLogout}
+          className="bg-white/90 hover:bg-white"
+        >
+          <LogOut className="w-4 h-4 mr-2" />
+          Sign Out
+        </Button>
       </div>
 
       {/* Content */}
