@@ -77,7 +77,7 @@ const Index = () => {
                 "View donation history",
                 "Track impact statistics"
               ]}
-              imageSrc="https://images.unsplash.com/photo-1615461066577-a9256c06fdde?auto=format&fit=crop&q=80"
+              imageSrc="https://images.unsplash.com/photo-1536856136534-bb679c52a9aa?auto=format&fit=crop&q=80"
             />
           </div>
           <div className="flex justify-center transform hover:-translate-y-2 transition-transform duration-300">
@@ -91,7 +91,7 @@ const Index = () => {
                 "Real-time status updates",
                 "Direct hospital communication"
               ]}
-              imageSrc="https://images.unsplash.com/photo-1576765974405-2c28767766d5?auto=format&fit=crop&q=80"
+              imageSrc="https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?auto=format&fit=crop&q=80"
             />
           </div>
         </div>
