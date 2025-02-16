@@ -1,10 +1,11 @@
+
 import { User, Hospital, Lock, LogOut } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import LoginCard from "@/components/LoginCard";
 import { supabase } from "@/integrations/supabase/client";
 import { useNavigate } from "react-router-dom";
 import { useToast } from "@/components/ui/use-toast";
-import { useAuth } from "@/hooks/useAuth";
+import { useAuth } from "@/contexts/AuthContext"; // Fixed import path
 
 const Index = () => {
   const navigate = useNavigate();
