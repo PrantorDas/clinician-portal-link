@@ -1,5 +1,5 @@
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -20,13 +20,6 @@ const Auth = () => {
   const { toast } = useToast();
   const navigate = useNavigate();
   const { user } = useAuth();
-
-  // Redirect if already logged in
-  if (user) {
-    navigate('/');
-    return null;
-  }
-
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -41,6 +34,13 @@ const Auth = () => {
     dateOfBirth: '',
     emergencyContact: '',
   });
+
+  // Move the redirect logic to useEffect
+  useEffect(() => {
+    if (user) {
+      navigate('/');
+    }
+  }, [user, navigate]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({
@@ -161,6 +161,11 @@ const Auth = () => {
       setLoading(false);
     }
   };
+
+  // If the page is still loading, return nothing
+  if (user) {
+    return null;
+  }
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
