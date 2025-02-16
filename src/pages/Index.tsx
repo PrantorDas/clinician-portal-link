@@ -1,14 +1,15 @@
-
 import { User, Hospital, Lock, LogOut } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import LoginCard from "@/components/LoginCard";
 import { supabase } from "@/integrations/supabase/client";
 import { useNavigate } from "react-router-dom";
 import { useToast } from "@/components/ui/use-toast";
+import { useAuth } from "@/hooks/useAuth";
 
 const Index = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
+  const { userType } = useAuth();
 
   const handleLogout = async () => {
     const { error } = await supabase.auth.signOut();
@@ -25,15 +26,15 @@ const Index = () => {
 
   // Handlers for different login types
   const handleDoctorLogin = () => {
-    console.log("Doctor login clicked");
+    navigate("/auth");
   };
 
   const handlePatientLogin = () => {
-    console.log("Patient login clicked");
+    navigate("/auth");
   };
 
   const handleHospitalLogin = () => {
-    console.log("Hospital login clicked");
+    navigate("/auth");
   };
 
   return (
