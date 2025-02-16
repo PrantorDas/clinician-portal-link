@@ -9,8 +9,10 @@ interface SignupFieldsProps {
 }
 
 export const SignupFields = ({ userType, formData, handleInputChange }: SignupFieldsProps) => {
+  const inputClassName = "bg-white/50 backdrop-blur-sm border-medical-200 focus:border-medical-500";
+  
   return (
-    <>
+    <div className="space-y-4">
       <Input
         name="confirmPassword"
         type="password"
@@ -18,6 +20,7 @@ export const SignupFields = ({ userType, formData, handleInputChange }: SignupFi
         value={formData.confirmPassword}
         onChange={handleInputChange}
         required
+        className={inputClassName}
       />
 
       <Input
@@ -26,16 +29,18 @@ export const SignupFields = ({ userType, formData, handleInputChange }: SignupFi
         placeholder="Phone Number"
         value={formData.phone}
         onChange={handleInputChange}
+        className={inputClassName}
       />
 
       {userType === 'hospital' && (
-        <>
+        <div className="space-y-4">
           <Input
             name="hospitalName"
             placeholder="Hospital Name"
             value={formData.hospitalName}
             onChange={handleInputChange}
             required
+            className={inputClassName}
           />
           <Input
             name="licenseNumber"
@@ -43,6 +48,7 @@ export const SignupFields = ({ userType, formData, handleInputChange }: SignupFi
             value={formData.licenseNumber}
             onChange={handleInputChange}
             required
+            className={inputClassName}
           />
           <Input
             name="address"
@@ -50,18 +56,20 @@ export const SignupFields = ({ userType, formData, handleInputChange }: SignupFi
             value={formData.address}
             onChange={handleInputChange}
             required
+            className={inputClassName}
           />
-        </>
+        </div>
       )}
 
       {(userType === 'donor' || userType === 'patient') && (
-        <>
+        <div className="space-y-4">
           <Input
             name="firstName"
             placeholder="First Name"
             value={formData.firstName}
             onChange={handleInputChange}
             required
+            className={inputClassName}
           />
           <Input
             name="lastName"
@@ -69,18 +77,20 @@ export const SignupFields = ({ userType, formData, handleInputChange }: SignupFi
             value={formData.lastName}
             onChange={handleInputChange}
             required
+            className={inputClassName}
           />
-        </>
+        </div>
       )}
 
       {userType === 'donor' && (
-        <>
+        <div className="space-y-4">
           <Input
             name="bloodType"
             placeholder="Blood Type"
             value={formData.bloodType}
             onChange={handleInputChange}
             required
+            className={inputClassName}
           />
           <Input
             name="dateOfBirth"
@@ -89,8 +99,9 @@ export const SignupFields = ({ userType, formData, handleInputChange }: SignupFi
             value={formData.dateOfBirth}
             onChange={handleInputChange}
             required
+            className={inputClassName}
           />
-        </>
+        </div>
       )}
 
       {userType === 'patient' && (
@@ -100,8 +111,9 @@ export const SignupFields = ({ userType, formData, handleInputChange }: SignupFi
           value={formData.emergencyContact}
           onChange={handleInputChange}
           required
+          className={inputClassName}
         />
       )}
-    </>
+    </div>
   );
 };

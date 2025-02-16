@@ -1,5 +1,4 @@
 
-import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Hospital, User, Users } from "lucide-react";
@@ -46,66 +45,84 @@ export const AuthForm = ({
   handleInputChange,
 }: AuthFormProps) => {
   return (
-    <form onSubmit={onSubmit} className="space-y-4">
-      <Tabs value={userType} onValueChange={(value) => setUserType(value as UserType)} className="mb-6">
-        <TabsList className="grid grid-cols-3 w-full">
-          <TabsTrigger value="donor" className="flex items-center gap-2">
+    <form onSubmit={onSubmit} className="space-y-6">
+      <Tabs 
+        value={userType} 
+        onValueChange={(value) => setUserType(value as UserType)} 
+        className="mb-8"
+      >
+        <TabsList className="grid grid-cols-3 w-full bg-medical-50/50">
+          <TabsTrigger 
+            value="donor" 
+            className="flex items-center gap-2 data-[state=active]:bg-white"
+          >
             <User className="h-4 w-4" />
             Donor
           </TabsTrigger>
-          <TabsTrigger value="hospital" className="flex items-center gap-2">
+          <TabsTrigger 
+            value="hospital" 
+            className="flex items-center gap-2 data-[state=active]:bg-white"
+          >
             <Hospital className="h-4 w-4" />
             Hospital
           </TabsTrigger>
-          <TabsTrigger value="patient" className="flex items-center gap-2">
+          <TabsTrigger 
+            value="patient" 
+            className="flex items-center gap-2 data-[state=active]:bg-white"
+          >
             <Users className="h-4 w-4" />
             Patient
           </TabsTrigger>
         </TabsList>
       </Tabs>
 
-      <Input
-        name="email"
-        type="email"
-        placeholder="Email"
-        value={formData.email}
-        onChange={handleInputChange}
-        required
-      />
-      <Input
-        name="password"
-        type="password"
-        placeholder="Password"
-        value={formData.password}
-        onChange={handleInputChange}
-        required
-      />
-
-      {mode === 'signup' && (
-        <SignupFields
-          userType={userType}
-          formData={formData}
-          handleInputChange={handleInputChange}
+      <div className="space-y-4">
+        <Input
+          name="email"
+          type="email"
+          placeholder="Email"
+          value={formData.email}
+          onChange={handleInputChange}
+          required
+          className="bg-white/50 backdrop-blur-sm border-medical-200 focus:border-medical-500"
         />
-      )}
+        <Input
+          name="password"
+          type="password"
+          placeholder="Password"
+          value={formData.password}
+          onChange={handleInputChange}
+          required
+          className="bg-white/50 backdrop-blur-sm border-medical-200 focus:border-medical-500"
+        />
 
-      <Button
-        type="submit"
-        className="w-full"
-        disabled={loading}
-      >
-        {loading ? 'Loading...' : mode === 'login' ? 'Sign In' : 'Sign Up'}
-      </Button>
+        {mode === 'signup' && (
+          <SignupFields
+            userType={userType}
+            formData={formData}
+            handleInputChange={handleInputChange}
+          />
+        )}
 
-      <div className="mt-4 text-center">
         <Button
-          variant="link"
-          onClick={() => setMode(mode === 'login' ? 'signup' : 'login')}
+          type="submit"
+          className="w-full bg-gradient-to-r from-medical-600 to-medical-500 hover:from-medical-700 hover:to-medical-600 text-white font-medium py-2.5"
+          disabled={loading}
         >
-          {mode === 'login' 
-            ? "Don't have an account? Sign up" 
-            : 'Already have an account? Sign in'}
+          {loading ? 'Loading...' : mode === 'login' ? 'Sign In' : 'Sign Up'}
         </Button>
+
+        <div className="text-center">
+          <Button
+            variant="link"
+            onClick={() => setMode(mode === 'login' ? 'signup' : 'login')}
+            className="text-medical-600 hover:text-medical-700"
+          >
+            {mode === 'login' 
+              ? "Don't have an account? Sign up" 
+              : 'Already have an account? Sign in'}
+          </Button>
+        </div>
       </div>
     </form>
   );
