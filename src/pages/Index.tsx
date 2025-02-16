@@ -5,7 +5,7 @@ import LoginCard from "@/components/LoginCard";
 import { supabase } from "@/integrations/supabase/client";
 import { useNavigate } from "react-router-dom";
 import { useToast } from "@/components/ui/use-toast";
-import { useAuth } from "@/contexts/AuthContext"; // Fixed import path
+import { useAuth } from "@/contexts/AuthContext";
 
 const Index = () => {
   const navigate = useNavigate();
@@ -39,25 +39,32 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen relative">
-      {/* Background Image with Overlay */}
+    <div className="min-h-screen relative overflow-hidden">
+      {/* Background Image with Enhanced Overlay */}
       <div 
-        className="absolute inset-0 z-0 bg-fixed"
+        className="absolute inset-0 z-0 bg-fixed transition-transform duration-1000 hover:scale-105"
         style={{
-          backgroundImage: 'url("https://images.unsplash.com/photo-1504813184591-01572f98c85f?auto=format&fit=crop&q=80")',
+          backgroundImage: 'url("https://images.unsplash.com/photo-1631248055158-edec7a3c072b?auto=format&fit=crop&q=80")',
           backgroundSize: 'cover',
           backgroundPosition: 'center'
         }}
       >
-        <div className="absolute inset-0 bg-gradient-to-b from-medical-900/90 via-medical-900/70 to-medical-900/90" />
+        <div className="absolute inset-0 bg-gradient-to-br from-medical-900/95 via-medical-900/85 to-medical-800/90 backdrop-blur-sm" />
       </div>
 
-      {/* Logout Button */}
+      {/* Animated Background Shapes */}
+      <div className="absolute inset-0 z-0 overflow-hidden">
+        <div className="absolute top-0 -left-4 w-72 h-72 bg-medical-500/10 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob" />
+        <div className="absolute top-0 -right-4 w-72 h-72 bg-medical-400/10 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000" />
+        <div className="absolute -bottom-8 left-20 w-72 h-72 bg-medical-300/10 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000" />
+      </div>
+
+      {/* Enhanced Logout Button */}
       <div className="absolute top-4 right-4 z-20">
         <Button
           variant="outline"
           onClick={handleLogout}
-          className="bg-white/90 hover:bg-white"
+          className="bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/20 text-white transition-all duration-300 hover:scale-105"
         >
           <LogOut className="w-4 h-4 mr-2" />
           Sign Out
@@ -66,25 +73,26 @@ const Index = () => {
 
       {/* Content */}
       <div className="relative z-10 min-h-screen flex flex-col items-center justify-center p-4 md:p-8">
-        {/* Hero Section */}
+        {/* Enhanced Hero Section */}
         <div className="text-center mb-16 animate-fade-in-slow">
           <div className="mb-8 relative">
-            <div className="absolute inset-0 bg-medical-500/20 rounded-full blur-3xl transform -translate-y-1/2" />
+            <div className="absolute inset-0 bg-gradient-to-br from-medical-400/30 to-medical-600/30 rounded-full blur-3xl transform -translate-y-1/2 animate-pulse" />
             <img 
-              src="https://images.unsplash.com/photo-1582719471384-894fbb16e074?auto=format&fit=crop&q=80" 
+              src="https://images.unsplash.com/photo-1615461066841-6116e61058f4?auto=format&fit=crop&q=80" 
               alt="Blood Donation" 
-              className="w-28 h-28 mx-auto rounded-full border-4 border-medical-100 shadow-2xl mb-6 relative z-10 object-cover"
+              className="w-32 h-32 mx-auto rounded-full border-4 border-medical-100/50 shadow-2xl mb-6 relative z-10 object-cover transition-transform duration-500 hover:scale-110 hover:rotate-3"
             />
           </div>
-          <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 tracking-tight">
+          <h1 className="text-6xl md:text-7xl font-bold text-white mb-6 tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white via-white to-medical-100">
             Life Saver Connect
           </h1>
-          <p className="text-xl text-gray-200 max-w-2xl mx-auto leading-relaxed">
-            Join our network of blood donors and healthcare providers to save lives
+          <p className="text-xl md:text-2xl text-gray-200 max-w-2xl mx-auto leading-relaxed font-light">
+            Join our network of blood donors and healthcare providers to 
+            <span className="text-medical-200 font-medium"> save lives</span>
           </p>
         </div>
 
-        {/* Login Cards Grid */}
+        {/* Enhanced Login Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full max-w-7xl mx-auto animate-fade-in px-4">
           <div className="flex justify-center transform hover:-translate-y-2 transition-transform duration-300">
             <LoginCard
@@ -97,7 +105,7 @@ const Index = () => {
                 "Donor and patient statistics",
                 "Emergency request management"
               ]}
-              imageSrc="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80"
+              imageSrc="https://images.unsplash.com/photo-1538108149393-fbbd81895907?auto=format&fit=crop&q=80"
             />
           </div>
           <div className="flex justify-center transform hover:-translate-y-2 transition-transform duration-300">
@@ -111,7 +119,7 @@ const Index = () => {
                 "View donation history",
                 "Track impact statistics"
               ]}
-              imageSrc="https://images.unsplash.com/photo-1536856136534-bb679c52a9aa?auto=format&fit=crop&q=80"
+              imageSrc="https://images.unsplash.com/photo-1615461066841-6116e61058f4?auto=format&fit=crop&q=80"
             />
           </div>
           <div className="flex justify-center transform hover:-translate-y-2 transition-transform duration-300">
@@ -125,29 +133,29 @@ const Index = () => {
                 "Real-time status updates",
                 "Direct hospital communication"
               ]}
-              imageSrc="https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?auto=format&fit=crop&q=80"
+              imageSrc="https://images.unsplash.com/photo-1651008376811-b90baee60c1f?auto=format&fit=crop&q=80"
             />
           </div>
         </div>
 
-        {/* Stats Section */}
+        {/* Enhanced Stats Section */}
         <div className="mt-20 grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-5xl mx-auto px-4">
-          <div className="text-center text-white p-6 rounded-xl bg-medical-600/20 backdrop-blur-md border border-medical-400/20 hover:bg-medical-600/30 transition-colors duration-300">
-            <div className="text-4xl font-bold mb-2">10,000+</div>
-            <div className="text-gray-200 font-medium">Active Donors</div>
+          <div className="text-center text-white p-8 rounded-2xl bg-gradient-to-br from-medical-600/20 to-medical-500/10 backdrop-blur-md border border-medical-400/20 hover:bg-medical-600/30 transition-all duration-300 hover:scale-105 group">
+            <div className="text-5xl font-bold mb-3 bg-clip-text text-transparent bg-gradient-to-r from-white to-medical-200">10,000+</div>
+            <div className="text-gray-200 font-medium text-lg group-hover:text-white transition-colors">Active Donors</div>
           </div>
-          <div className="text-center text-white p-6 rounded-xl bg-medical-600/20 backdrop-blur-md border border-medical-400/20 hover:bg-medical-600/30 transition-colors duration-300">
-            <div className="text-4xl font-bold mb-2">500+</div>
-            <div className="text-gray-200 font-medium">Partner Hospitals</div>
+          <div className="text-center text-white p-8 rounded-2xl bg-gradient-to-br from-medical-600/20 to-medical-500/10 backdrop-blur-md border border-medical-400/20 hover:bg-medical-600/30 transition-all duration-300 hover:scale-105 group">
+            <div className="text-5xl font-bold mb-3 bg-clip-text text-transparent bg-gradient-to-r from-white to-medical-200">500+</div>
+            <div className="text-gray-200 font-medium text-lg group-hover:text-white transition-colors">Partner Hospitals</div>
           </div>
-          <div className="text-center text-white p-6 rounded-xl bg-medical-600/20 backdrop-blur-md border border-medical-400/20 hover:bg-medical-600/30 transition-colors duration-300">
-            <div className="text-4xl font-bold mb-2">15,000+</div>
-            <div className="text-gray-200 font-medium">Lives Saved</div>
+          <div className="text-center text-white p-8 rounded-2xl bg-gradient-to-br from-medical-600/20 to-medical-500/10 backdrop-blur-md border border-medical-400/20 hover:bg-medical-600/30 transition-all duration-300 hover:scale-105 group">
+            <div className="text-5xl font-bold mb-3 bg-clip-text text-transparent bg-gradient-to-r from-white to-medical-200">15,000+</div>
+            <div className="text-gray-200 font-medium text-lg group-hover:text-white transition-colors">Lives Saved</div>
           </div>
         </div>
 
-        {/* Footer */}
-        <footer className="mt-20 text-center text-gray-300 animate-fade-in">
+        {/* Enhanced Footer */}
+        <footer className="mt-20 text-center text-gray-300 animate-fade-in backdrop-blur-sm p-6 rounded-xl bg-medical-900/10 border border-medical-400/10">
           <p className="text-sm font-medium">
             Protected by industry-leading security protocols | Available 24/7 for emergency requests
           </p>
